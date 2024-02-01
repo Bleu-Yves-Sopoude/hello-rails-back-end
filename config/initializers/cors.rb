@@ -6,12 +6,14 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# Rails.application.config.middleware.insert_before 0, Rack::Cors do
-#   allow do
-#     origins "example.com"
-#
-#     resource "*",
-#       headers: :any,
-#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
-#   end
-# end
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'http://localhost:3001' # Replace with your frontend's origin
+  
+      resource '/greeting',
+        headers: :any,
+        methods: [:get, :options] # Add other HTTP methods as needed
+    end
+  end
+  
